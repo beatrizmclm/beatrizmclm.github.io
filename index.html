@@ -3,328 +3,256 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Beatriz Manso | Bioinformatics</title>
-<meta name="description" content="Beatriz Manso, PhD. Bioinformatician working on transcriptomics, machine learning for genomic data, and the statistics that decide whether a result is real.">
+<title>Beatriz Manso</title>
+<meta name="description" content="Beatriz Manso. I work on gene expression data and whether you can trust what it tells you.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fcfcfb; --ink:#17171a; --body:#3f3f45; --dim:#76767e;
-  --rule:#e2e1dd; --panel:#f5f4f1;
-  --mark:#b4531f;
-  --serif:'IBM Plex Serif',Georgia,serif;
-  --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
-  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --paper:#fdfcf8; --ink:#16150f; --body:#3a382f; --quiet:#7d7a6d;
+  --rule:#e0ddd0; --tint:#f5f2e8; --underline:#b3ad99;
+  --accent:#8c2f1f;
+  --serif:'EB Garamond',Garamond,Georgia,serif;
+  --sans:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#131315; --ink:#f0efec; --body:#c3c2be; --dim:#8b8a85;
-    --rule:#2a2a2d; --panel:#1b1b1e; --mark:#e08a52;
+    --paper:#12120e; --ink:#efece1; --body:#c5c1b3; --quiet:#8b877a;
+    --rule:#2b2a24; --tint:#1a1a15; --accent:#d4674e; --underline:#5c584d;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#131315; --ink:#f0efec; --body:#c3c2be; --dim:#8b8a85;
-  --rule:#2a2a2d; --panel:#1b1b1e; --mark:#e08a52;
+  --paper:#12120e; --ink:#efece1; --body:#c5c1b3; --quiet:#8b877a;
+  --rule:#2b2a24; --tint:#1a1a15; --accent:#d4674e; --underline:#5c584d;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--body);
-  font-family:var(--sans);font-size:17px;line-height:1.62;
-  -webkit-font-smoothing:antialiased}
-.page{max-width:1000px;margin:0 auto;padding:0 28px}
-a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);
-  transition:border-color .15s}
-a:hover{border-bottom-color:var(--mark)}
-strong{color:var(--ink);font-weight:600}
+body{margin:0;background:var(--paper);color:var(--body);
+  font-family:var(--serif);font-size:20px;line-height:1.58;
+  font-feature-settings:"liga" 1,"kern" 1}
+.sheet{max-width:660px;margin:0 auto;padding:0 30px}
+p{margin:0 0 1.05em}
+a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-underline-offset:2.5px;text-decoration-color:var(--underline)}
+a:hover{text-decoration-color:var(--accent);color:var(--ink)}
+em{font-style:italic}
+strong{font-weight:600;color:var(--ink)}
 
-/* ---- masthead ---- */
-.mast{padding:104px 0 44px}
-.mast h1{font-family:var(--serif);font-weight:600;color:var(--ink);
-  font-size:clamp(2.7rem,7vw,4.1rem);line-height:1.02;letter-spacing:-.025em;
-  margin:0 0 22px}
-.standfirst{font-family:var(--serif);font-size:clamp(1.15rem,2.3vw,1.42rem);
-  line-height:1.48;color:var(--body);max-width:31ch;margin:0 0 34px}
-.standfirst em{color:var(--ink);font-style:italic}
-.links{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);
-  font-size:13.5px;color:var(--dim)}
-.links a{border-bottom:1px solid transparent}
-.links a:hover{border-bottom-color:var(--mark);color:var(--ink)}
+.title{font-family:var(--serif);font-weight:500;color:var(--ink);
+  font-size:clamp(2.4rem,7vw,3.3rem);line-height:1.05;letter-spacing:-.012em;
+  margin:0 0 .28em}
+.opening{padding:92px 0 8px}
+.opening .line{font-size:1.18em;color:var(--ink);margin:0 0 1.1em;
+  max-width:26ch;line-height:1.34}
+.details{font-family:var(--sans);font-size:13.5px;line-height:2;
+  color:var(--quiet);letter-spacing:.005em}
+.details a{text-decoration-color:transparent}
+.details a:hover{text-decoration-color:var(--accent)}
+.sep{color:var(--rule);padding:0 7px}
 
-/* ---- editorial two-column rows ---- */
-.row{display:grid;grid-template-columns:150px 1fr;gap:42px;
-  padding:46px 0;border-top:1px solid var(--rule)}
-.rowlabel{font-family:var(--mono);font-size:12.5px;color:var(--dim);
-  padding-top:5px;letter-spacing:.02em}
-.rowbody{max-width:62ch}
-.rowbody > p{margin:0 0 18px}
-.rowbody > p:last-child{margin-bottom:0}
 h2{font-family:var(--serif);font-weight:600;color:var(--ink);
-  font-size:1.42rem;letter-spacing:-.012em;margin:0 0 14px;line-height:1.25}
+  font-size:1.32em;line-height:1.3;letter-spacing:-.008em;
+  margin:2.4em 0 .55em}
 h3{font-family:var(--serif);font-weight:600;color:var(--ink);
-  font-size:1.1rem;margin:0 0 5px}
+  font-size:1.06em;margin:1.9em 0 .2em}
+.dateline{font-family:var(--sans);font-size:12.5px;color:var(--quiet);
+  margin:0 0 .5em;letter-spacing:.01em}
+.cite{font-style:italic;color:var(--quiet);font-size:.94em;margin:0 0 .9em}
 
-/* ---- figure ---- */
-figure{margin:30px 0 0;padding:22px 20px 16px;background:var(--panel);
-  border-radius:3px}
-figure svg{display:block;width:100%;height:auto}
-figure svg .k{fill:var(--mark)}
-figcaption{font-size:14.2px;line-height:1.55;color:var(--dim);margin-top:14px}
-figcaption b{color:var(--ink);font-weight:600}
-.fig-key{display:flex;gap:20px;font-family:var(--mono);font-size:12px;
-  color:var(--dim);margin-bottom:12px}
-.swatch{display:inline-block;width:10px;height:10px;margin-right:6px;
-  vertical-align:baseline;border-radius:1px}
+hr{border:0;border-top:1px solid var(--rule);margin:3em 0 0}
 
-/* ---- work list ---- */
-.work{margin:0;padding:0;list-style:none}
-.work li{padding:16px 0;border-bottom:1px solid var(--rule);
-  display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:baseline}
-.work li:last-child{border-bottom:none}
-.work .what{font-family:var(--serif);font-size:1.06rem;color:var(--ink);
-  font-weight:500;justify-self:start}
-.work .note{grid-column:1/-1;font-size:14.6px;color:var(--dim);margin:0}
-.work .kind{font-family:var(--mono);font-size:11.5px;color:var(--dim);
-  white-space:nowrap}
+figure{margin:1.9em 0 1.6em;padding:0}
+figure svg{display:block;width:100%;height:auto;background:var(--tint);
+  padding:16px 14px 8px;border-radius:2px}
+figure svg .k{fill:var(--accent)}
+figcaption{font-family:var(--sans);font-size:13.6px;line-height:1.62;
+  color:var(--quiet);margin-top:.85em}
+figcaption b{color:var(--ink);font-weight:500}
+.key{font-family:var(--sans);font-size:12px;color:var(--quiet);
+  margin:0 0 .5em}
+.chip{display:inline-block;width:9px;height:9px;border-radius:1px;
+  margin-right:5px}
 
-/* ---- lead entry ---- */
-.lead{padding:22px 0 4px}
-.lead .thesis{font-family:var(--serif);font-style:italic;color:var(--dim);
-  font-size:15.4px;margin:0 0 14px}
-.sub{font-family:var(--mono);font-size:12px;color:var(--dim);margin:0 0 8px}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{margin:0 0 1.15em}
+ul.plain .lead{color:var(--ink)}
+ul.plain .gloss{color:var(--quiet);font-size:.93em}
 
-/* ---- skills ---- */
-.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
-  gap:24px 32px}
-.kit h4{font-family:var(--mono);font-size:11.5px;color:var(--dim);
-  font-weight:400;margin:0 0 8px}
-.kit p{margin:0;font-size:15.2px;line-height:1.7}
+.cols{font-family:var(--sans);font-size:14.6px;line-height:1.72;
+  color:var(--body)}
+.cols dt{font-size:12.5px;color:var(--quiet);margin:1.1em 0 .15em}
+.cols dt:first-child{margin-top:0}
+.cols dd{margin:0}
 
-footer{padding:46px 0 84px;border-top:1px solid var(--rule)}
-footer p{margin:0 0 10px}
-.sig{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin-top:26px}
+footer{margin:3.4em 0 0;padding:2em 0 5em;border-top:1px solid var(--rule)}
+.stamp{font-family:var(--sans);font-size:12.5px;color:var(--quiet);
+  margin-top:1.6em}
 
-@media(max-width:720px){
-  .mast{padding:66px 0 34px}
-  .row{grid-template-columns:1fr;gap:14px;padding:36px 0}
-  .rowlabel{padding-top:0}
-  .work li{grid-template-columns:1fr}
-  .work .kind{display:none}
+@media(max-width:640px){
+  body{font-size:18.5px}
+  .opening{padding:58px 0 6px}
+  .sheet{padding:0 24px}
 }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="sheet">
 
-<header class="mast">
-  <h1>Beatriz Manso</h1>
-  <p class="standfirst">
-    I build computational pipelines for genomic data, and then I try
-    <em>very hard</em> to break them.
+<header class="opening">
+  <h1 class="title">Beatriz Manso</h1>
+  <p class="line">I work on gene expression data, and on whether you can
+    trust what it tells you.</p>
+  <p class="details">
+    PhD Bioinformatics, University of West London<span class="sep">/</span>London<br>
+    <a href="mailto:manso.beatriz@gmail.com">manso.beatriz@gmail.com</a><span class="sep">/</span><a href="https://github.com/beatrizmclm">GitHub</a><span class="sep">/</span><a href="https://www.linkedin.com/in/beatriz-manso/">LinkedIn</a><span class="sep">/</span><a href="cv.pdf">CV</a>
   </p>
-  <div class="links">
-    <span>PhD Bioinformatics</span>
-    <span>London</span>
-    <a href="mailto:manso.beatriz@gmail.com">manso.beatriz@gmail.com</a>
-    <a href="https://github.com/beatrizmclm">GitHub</a>
-    <a href="https://www.linkedin.com/in/beatriz-manso/">LinkedIn</a>
-    <a href="cv.pdf">CV</a>
-  </div>
 </header>
 
-<div class="row">
-  <div class="rowlabel">01 / about</div>
-  <div class="rowbody">
-    <p>
-      Most of my work is in transcriptomics: differential expression,
-      classification of tissue from gene expression, and the statistics that
-      decide whether a result is actually there. I work mainly in Python and R,
-      and I care a lot about whether an analysis can be run again by someone
-      who is not me.
-    </p>
-    <p>
-      I completed my PhD at the University of West London in 2026 and now lead
-      the MSc Bioinformatics programme there, teaching the computational biology
-      modules and supervising student projects.
-    </p>
-    <p>
-      Lately I have been preoccupied with one problem in particular: how easily
-      a respectable-looking performance figure in a small genomic study can be
-      wrong, and how much work it takes to notice.
-    </p>
-  </div>
-</div>
+<hr>
 
-<div class="row">
-  <div class="rowlabel">02 / what I'm working on</div>
-  <div class="rowbody">
-    <h2>Accuracy can hide a model that does nothing</h2>
-    <p>
-      Gene expression datasets are usually small and rarely balanced. The brain
-      cancer cohort below has 130 samples, 117 of them tumour. A model that
-      simply answers <em>"tumour"</em> every single time is therefore 90%
-      accurate, and completely useless.
-    </p>
+<h2>What I do</h2>
+<p>
+  Transcriptomics, mostly. In R and Python, mostly. Usually the unglamorous
+  middle part: getting the counts right, picking a model, then working out
+  whether the result survives being tested properly.
+</p>
+<p>
+  I finished my PhD at the University of West London in 2026. I now run the
+  MSc Bioinformatics programme there and teach the computational modules.
+</p>
+<p>
+  Most of what I think about at the moment came out of going back through my
+  own thesis. The classifier in it looked fine. It was not, quite. Some of the
+  performance came from choosing the marker genes on the whole dataset rather
+  than inside each cross-validation fold, which quietly inflates everything
+  downstream. That was not a good week. It is also the most useful thing I
+  have learned.
+</p>
 
-    <figure>
-      <div class="fig-key">
-        <span><span class="swatch" style="background:var(--dim)"></span>Accuracy</span>
-        <span><span class="swatch" style="background:var(--mark)"></span>Cohen's &#954;</span>
-      </div>
-      <svg viewBox="0 0 560 232" role="img"
-           aria-label="Bar chart comparing accuracy and Cohen's kappa for four models on GSE50161. Always-tumour and sigmoid both reach 0.900 accuracy with kappa of exactly zero. Softsign reaches 0.940 accuracy and 0.651 kappa; tanh reaches 0.941 and 0.665.">
-        <g stroke="currentColor" stroke-opacity=".16" stroke-width="1">
-          <line x1="52" y1="196" x2="548" y2="196"/>
-          <line x1="52" y1="151" x2="548" y2="151"/>
-          <line x1="52" y1="106" x2="548" y2="106"/>
-          <line x1="52" y1="61"  x2="548" y2="61"/>
-          <line x1="52" y1="16"  x2="548" y2="16"/>
-        </g>
-        <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" fill-opacity=".5">
-          <text x="44" y="200" text-anchor="end">0</text>
-          <text x="44" y="155" text-anchor="end">0.25</text>
-          <text x="44" y="110" text-anchor="end">0.50</text>
-          <text x="44" y="65"  text-anchor="end">0.75</text>
-          <text x="44" y="20"  text-anchor="end">1.00</text>
-        </g>
-        <!-- always tumour -->
-        <rect x="79"  y="34"  width="30" height="162" fill="currentColor" fill-opacity=".33"/>
-        <rect x="115" y="193" width="30" height="3"   class="k"/>
-        <!-- sigmoid -->
-        <rect x="199" y="34"  width="30" height="162" fill="currentColor" fill-opacity=".33"/>
-        <rect x="235" y="193" width="30" height="3"   class="k"/>
-        <!-- softsign -->
-        <rect x="319" y="27"  width="30" height="169" fill="currentColor" fill-opacity=".33"/>
-        <rect x="355" y="79"  width="30" height="117" class="k"/>
-        <!-- tanh -->
-        <rect x="439" y="26"  width="30" height="170" fill="currentColor" fill-opacity=".33"/>
-        <rect x="475" y="76"  width="30" height="120" class="k"/>
-        <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" fill-opacity=".62">
-          <text x="112" y="216" text-anchor="middle">always "tumour"</text>
-          <text x="232" y="216" text-anchor="middle">sigmoid</text>
-          <text x="352" y="216" text-anchor="middle">softsign</text>
-          <text x="472" y="216" text-anchor="middle">tanh</text>
-        </g>
-        <g font-family="IBM Plex Mono, monospace" font-size="10" class="k">
-          <text x="130" y="189" text-anchor="middle">0.000</text>
-          <text x="250" y="189" text-anchor="middle">0.000</text>
-        </g>
-      </svg>
-      <figcaption>
-        Four models, one dataset (GSE50161, 117 tumour / 13 normal), 10&#215;5-fold
-        repeated stratified cross-validation. <b>Sigmoid reaches 0.900 accuracy
-        with a Cohen's &#954; of exactly zero</b>, numerically
-        indistinguishable from always answering "tumour". Reported as accuracy
-        alone, it looks like a working classifier. Only tanh and softsign learn
-        anything.
-      </figcaption>
-    </figure>
+<h2>Accuracy can hide a model that does nothing</h2>
+<p>
+  Gene expression datasets are small and rarely balanced. The brain cancer
+  cohort below has 130 samples, 117 of them tumour. So a model that answers
+  <em>tumour</em> every single time scores 90&#37; accuracy while doing
+  nothing at all.
+</p>
 
-    <p style="margin-top:22px">
-      I am writing this up alongside a second result: when the classifier genes
-      are chosen using the whole dataset rather than inside each training fold,
-      logistic regression's &#954; rises from 0.790 to 0.915. Roughly
-      <strong>14% of the headline number was an artefact of the evaluation</strong>,
-      not the biology. Both findings come out of re-examining my own thesis
-      pipeline.
-    </p>
-  </div>
-</div>
+<figure>
+  <p class="key">
+    <span class="chip" style="background:var(--quiet)"></span>Accuracy
+    &nbsp;&nbsp;
+    <span class="chip" style="background:var(--accent)"></span>Cohen&#8217;s &#954;
+  </p>
+  <svg viewBox="0 0 560 232" role="img"
+       aria-label="Accuracy against Cohen's kappa for four models on GSE50161. Always-tumour and sigmoid both reach 0.900 accuracy at kappa zero. Softsign reaches 0.940 and 0.651; tanh reaches 0.941 and 0.665.">
+    <g stroke="currentColor" stroke-opacity=".15" stroke-width="1">
+      <line x1="52" y1="196" x2="548" y2="196"/>
+      <line x1="52" y1="151" x2="548" y2="151"/>
+      <line x1="52" y1="106" x2="548" y2="106"/>
+      <line x1="52" y1="61"  x2="548" y2="61"/>
+      <line x1="52" y1="16"  x2="548" y2="16"/>
+    </g>
+    <g font-family="Public Sans, sans-serif" font-size="10.5" fill="currentColor" fill-opacity=".45">
+      <text x="44" y="200" text-anchor="end">0</text>
+      <text x="44" y="155" text-anchor="end">0.25</text>
+      <text x="44" y="110" text-anchor="end">0.50</text>
+      <text x="44" y="65"  text-anchor="end">0.75</text>
+      <text x="44" y="20"  text-anchor="end">1.00</text>
+    </g>
+    <rect x="79"  y="34"  width="30" height="162" fill="currentColor" fill-opacity=".3"/>
+    <rect x="115" y="193" width="30" height="3" class="k"/>
+    <rect x="199" y="34"  width="30" height="162" fill="currentColor" fill-opacity=".3"/>
+    <rect x="235" y="193" width="30" height="3" class="k"/>
+    <rect x="319" y="27"  width="30" height="169" fill="currentColor" fill-opacity=".3"/>
+    <rect x="355" y="79"  width="30" height="117" class="k"/>
+    <rect x="439" y="26"  width="30" height="170" fill="currentColor" fill-opacity=".3"/>
+    <rect x="475" y="76"  width="30" height="120" class="k"/>
+    <g font-family="Public Sans, sans-serif" font-size="10.5" fill="currentColor" fill-opacity=".6">
+      <text x="112" y="216" text-anchor="middle">always &#8220;tumour&#8221;</text>
+      <text x="232" y="216" text-anchor="middle">sigmoid</text>
+      <text x="352" y="216" text-anchor="middle">softsign</text>
+      <text x="472" y="216" text-anchor="middle">tanh</text>
+    </g>
+    <g font-family="Public Sans, sans-serif" font-size="10" class="k">
+      <text x="130" y="189" text-anchor="middle">0.000</text>
+      <text x="250" y="189" text-anchor="middle">0.000</text>
+    </g>
+  </svg>
+  <figcaption>
+    Four models, one dataset (GSE50161, 117 tumour / 13 normal), 10&#215;5-fold
+    repeated stratified cross-validation. <b>Sigmoid reaches 0.900 accuracy at a
+    Cohen&#8217;s &#954; of exactly zero</b>, which is to say it is
+    indistinguishable from always answering &#8220;tumour&#8221;. Only tanh and
+    softsign learn anything. Reported as accuracy alone, all four look
+    respectable.
+  </figcaption>
+</figure>
 
-<div class="row">
-  <div class="rowlabel">03 / doctoral work</div>
-  <div class="rowbody">
-    <div class="lead">
-      <p class="sub">PhD Bioinformatics &#183; University of West London &#183; 2022&#8211;2026</p>
-      <h3>Neural network models for gene expression classification</h3>
-      <p class="thesis">
-        Structural, Functional and Genomic Decompensation Analysis of the Brain
-        in Chiari Malformation I Patients
-      </p>
-      <p>
-        I implemented convolutional and artificial neural networks from first
-        principles in C++, then evaluated them properly: activation functions
-        chosen by 10&#215;5-fold repeated stratified cross-validation with
-        Friedman testing and Bonferroni-corrected post-hoc comparisons, and
-        benchmarked against logistic regression, SVM and random forests under an
-        identical protocol.
-      </p>
-      <p>
-        The benchmarking is the part I would defend hardest. It is also the part
-        that told me the deep model was not earning its complexity.
-      </p>
-    </div>
-  </div>
-</div>
+<p>
+  The second result is the one from my own pipeline. Selecting the marker genes
+  on the full dataset instead of inside each fold lifts logistic regression from
+  &#954;&#160;0.790 to 0.915. About <strong>14&#37; of the headline number was
+  the evaluation, not the biology</strong>. I am writing both up now.
+</p>
 
-<div class="row">
-  <div class="rowlabel">04 / selected analyses</div>
-  <div class="rowbody">
-    <ul class="work">
-      <li>
-        <a class="what" href="https://github.com/beatrizmclm/4.RNA-Seq_Expression_Analysis">RNA-seq expression analysis</a>
-        <span class="kind">R / Bioconductor</span>
-        <p class="note">Raw reads through to differential expression and interpretation.</p>
-      </li>
-      <li>
-        <a class="what" href="https://github.com/beatrizmclm/3.Variant_Call_Analysis">Variant calling</a>
-        <span class="kind">NGS</span>
-        <p class="note">SNP and small indel identification from sequencing data.</p>
-      </li>
-      <li>
-        <a class="what" href="https://github.com/beatrizmclm/8.eQTL_Analysis">eQTL analysis</a>
-        <span class="kind">Statistics</span>
-        <p class="note">Allelic variants associated with transcript-level genetic control.</p>
-      </li>
-      <li>
-        <a class="what" href="https://github.com/beatrizmclm/9.ChIP-seq_Analysis">ChIP-seq</a>
-        <span class="kind">NGS</span>
-        <p class="note">Binding sites of DNA-associated proteins from immunoprecipitation data.</p>
-      </li>
-      <li>
-        <a class="what" href="https://github.com/beatrizmclm/10.DNA_Methylation_Analysis">DNA methylation</a>
-        <span class="kind">Epigenomics</span>
-        <p class="note">Chromosomal patterns of DNA and histone modification.</p>
-      </li>
-      <li>
-        <a class="what" href="https://github.com/beatrizmclm/Machine_Learning_Global_Covid_Dataset">Machine learning on COVID-19 data</a>
-        <span class="kind">Python</span>
-        <p class="note">Supervised and unsupervised modelling outside a genomics context.</p>
-      </li>
-    </ul>
-    <p style="margin-top:20px;font-size:14.8px;color:var(--dim)">
-      Further work across NGS quality control, microarray analysis,
-      phylogenetics, protein structure and Biopython is archived on
-      <a href="https://github.com/beatrizmclm?tab=repositories">GitHub</a>.
-    </p>
-  </div>
-</div>
+<h2>Doctoral work</h2>
+<p class="dateline">University of West London, 2022&#8211;2026</p>
+<p class="cite">
+  Structural, Functional and Genomic Decompensation Analysis of the Brain in
+  Chiari Malformation I Patients
+</p>
+<p>
+  I wrote convolutional and artificial neural networks from scratch in C++,
+  then spent much longer evaluating them than building them. Activation
+  functions chosen by 10&#215;5-fold repeated stratified cross-validation with
+  Friedman testing and Bonferroni-corrected comparisons; benchmarks against
+  logistic regression, SVM and random forests under one protocol.
+</p>
+<p>
+  The benchmarking is the part I would defend hardest. It is also the part that
+  told me the deep model was not earning its complexity.
+</p>
 
-<div class="row">
-  <div class="rowlabel">05 / toolkit</div>
-  <div class="rowbody">
-    <div class="kit">
-      <div><h4>languages</h4><p>Python, R, C++, Bash, SQL</p></div>
-      <div><h4>genomics</h4><p>RNA-seq, microarray, variant annotation, ChIP-seq, methylation, eQTL</p></div>
-      <div><h4>modelling</h4><p>scikit-learn, Keras, TensorFlow, cross-validation and model comparison</p></div>
-      <div><h4>working practice</h4><p>Git, Linux, HPC, Docker, Snakemake, R Markdown</p></div>
-    </div>
-  </div>
-</div>
+<h2>Some analyses</h2>
+<ul class="plain">
+  <li><a class="lead" href="https://github.com/beatrizmclm/4.RNA-Seq_Expression_Analysis">RNA-seq expression analysis</a><br>
+    <span class="gloss">Raw reads through to differential expression. R and Bioconductor.</span></li>
+  <li><a class="lead" href="https://github.com/beatrizmclm/3.Variant_Call_Analysis">Variant calling</a><br>
+    <span class="gloss">SNPs and small indels from sequencing data.</span></li>
+  <li><a class="lead" href="https://github.com/beatrizmclm/8.eQTL_Analysis">eQTL analysis</a><br>
+    <span class="gloss">Allelic variants associated with transcript-level genetic control.</span></li>
+  <li><a class="lead" href="https://github.com/beatrizmclm/9.ChIP-seq_Analysis">ChIP-seq</a><br>
+    <span class="gloss">Binding sites of DNA-associated proteins.</span></li>
+  <li><a class="lead" href="https://github.com/beatrizmclm/10.DNA_Methylation_Analysis">DNA methylation</a><br>
+    <span class="gloss">Chromosomal patterns of DNA and histone modification.</span></li>
+  <li><a class="lead" href="https://github.com/beatrizmclm/Machine_Learning_Global_Covid_Dataset">Machine learning on COVID-19 data</a><br>
+    <span class="gloss">Supervised and unsupervised modelling, outside genomics for once.</span></li>
+</ul>
+<p style="font-size:.93em;color:var(--quiet)">
+  Older coursework across NGS quality control, microarray analysis,
+  phylogenetics, protein structure and Biopython is archived on
+  <a href="https://github.com/beatrizmclm?tab=repositories">GitHub</a>.
+</p>
+
+<h2>Tools</h2>
+<dl class="cols">
+  <dt>Languages</dt><dd>Python, R, C++, Bash, SQL</dd>
+  <dt>Genomics</dt><dd>RNA-seq, microarray, variant annotation, ChIP-seq, methylation, eQTL</dd>
+  <dt>Modelling</dt><dd>scikit-learn, Keras, TensorFlow, cross-validation and model comparison</dd>
+  <dt>Day to day</dt><dd>Git, Linux, HPC, Docker, Snakemake, R Markdown</dd>
+</dl>
 
 <footer>
   <p>
     I am looking for research and industry roles in bioinformatics and
-    computational biology, and I am always glad to talk about evaluation
-    methodology with anyone who will tolerate it.
+    computational biology. If any of the above is useful to you, or wrong,
+    do get in touch.
   </p>
-  <p class="links" style="margin-top:18px">
-    <a href="mailto:manso.beatriz@gmail.com">manso.beatriz@gmail.com</a>
-    <a href="https://github.com/beatrizmclm">GitHub</a>
-    <a href="https://www.linkedin.com/in/beatriz-manso/">LinkedIn</a>
-    <a href="cv.pdf">CV (PDF)</a>
+  <p class="details">
+    <a href="mailto:manso.beatriz@gmail.com">manso.beatriz@gmail.com</a><span class="sep">/</span><a href="https://github.com/beatrizmclm">GitHub</a><span class="sep">/</span><a href="https://www.linkedin.com/in/beatriz-manso/">LinkedIn</a><span class="sep">/</span><a href="cv.pdf">CV</a>
   </p>
-  <p class="sig">London, UK</p>
+  <p class="stamp">Last updated August 2026</p>
 </footer>
 
 </div>
