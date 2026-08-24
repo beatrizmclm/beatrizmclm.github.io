@@ -19,85 +19,100 @@
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --paper:#12120e; --ink:#efece1; --body:#c5c1b3; --quiet:#8b877a;
-    --rule:#2b2a24; --tint:#1a1a15; --accent:#d4674e; --underline:#5c584d;
+    --rule:#2b2a24; --tint:#1a1a15; --underline:#5c584d; --accent:#d4674e;
   }
 }
 :root[data-theme="dark"]{
   --paper:#12120e; --ink:#efece1; --body:#c5c1b3; --quiet:#8b877a;
-  --rule:#2b2a24; --tint:#1a1a15; --accent:#d4674e; --underline:#5c584d;
+  --rule:#2b2a24; --tint:#1a1a15; --underline:#5c584d; --accent:#d4674e;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--body);
-  font-family:var(--serif);font-size:20px;line-height:1.58;
+  font-family:var(--serif);font-size:20px;line-height:1.56;
   font-feature-settings:"liga" 1,"kern" 1}
-.sheet{max-width:660px;margin:0 auto;padding:0 30px}
-p{margin:0 0 1.05em}
+.page{max-width:1060px;margin:0 auto;padding:0 40px}
+p{margin:0 0 1.02em}
 a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
   text-underline-offset:2.5px;text-decoration-color:var(--underline)}
 a:hover{text-decoration-color:var(--accent);color:var(--ink)}
-em{font-style:italic}
 strong{font-weight:600;color:var(--ink)}
 
+/* masthead */
+.opening{padding:96px 0 52px}
 .title{font-family:var(--serif);font-weight:500;color:var(--ink);
-  font-size:clamp(2.4rem,7vw,3.3rem);line-height:1.05;letter-spacing:-.012em;
-  margin:0 0 .28em}
-.opening{padding:92px 0 8px}
-.opening .line{font-size:1.18em;color:var(--ink);margin:0 0 1.1em;
-  max-width:26ch;line-height:1.34}
+  font-size:clamp(2.6rem,6.5vw,3.7rem);line-height:1.04;letter-spacing:-.014em;
+  margin:0 0 .3em}
+.line{font-size:1.22em;color:var(--ink);margin:0 0 1.15em;
+  max-width:24ch;line-height:1.32}
 .details{font-family:var(--sans);font-size:13.5px;line-height:2;
-  color:var(--quiet);letter-spacing:.005em}
+  color:var(--quiet)}
 .details a{text-decoration-color:transparent}
 .details a:hover{text-decoration-color:var(--accent)}
 .sep{color:var(--rule);padding:0 7px}
 
+/* two-column rows */
+.row{display:grid;grid-template-columns:158px minmax(0,1fr);gap:48px;
+  padding:52px 0;border-top:1px solid var(--rule)}
+.rowlabel{font-family:var(--sans);font-size:13px;color:var(--quiet);
+  padding-top:.55em;line-height:1.4}
+.rowbody{max-width:none}
+.rowbody > :first-child{margin-top:0}
+/* prose stays at a readable measure; figures and grids use the full width */
+.rowbody > p,.rowbody > h2,.rowbody > h3,
+.rowbody > .cite,.rowbody > .dateline{max-width:63ch}
+
 h2{font-family:var(--serif);font-weight:600;color:var(--ink);
-  font-size:1.32em;line-height:1.3;letter-spacing:-.008em;
-  margin:2.4em 0 .55em}
+  font-size:1.34em;line-height:1.28;letter-spacing:-.008em;margin:0 0 .5em}
 h3{font-family:var(--serif);font-weight:600;color:var(--ink);
-  font-size:1.06em;margin:1.9em 0 .2em}
+  font-size:1.06em;margin:1.7em 0 .2em}
 .dateline{font-family:var(--sans);font-size:12.5px;color:var(--quiet);
-  margin:0 0 .5em;letter-spacing:.01em}
+  margin:0 0 .5em}
 .cite{font-style:italic;color:var(--quiet);font-size:.94em;margin:0 0 .9em}
 
-hr{border:0;border-top:1px solid var(--rule);margin:3em 0 0}
-
-figure{margin:1.9em 0 1.6em;padding:0}
+/* figure */
+figure{margin:1.8em 0 1.5em;padding:0}
 figure svg{display:block;width:100%;height:auto;background:var(--tint);
-  padding:16px 14px 8px;border-radius:2px}
+  padding:18px 16px 10px;border-radius:2px}
 figure svg .k{fill:var(--accent)}
-figcaption{font-family:var(--sans);font-size:13.6px;line-height:1.62;
+figcaption{font-family:var(--sans);font-size:13.6px;line-height:1.6;
   color:var(--quiet);margin-top:.85em}
 figcaption b{color:var(--ink);font-weight:500}
-.key{font-family:var(--sans);font-size:12px;color:var(--quiet);
-  margin:0 0 .5em}
+.key{font-family:var(--sans);font-size:12px;color:var(--quiet);margin:0 0 .5em}
 .chip{display:inline-block;width:9px;height:9px;border-radius:1px;
   margin-right:5px}
 
-ul.plain{list-style:none;margin:0;padding:0}
-ul.plain li{margin:0 0 1.15em}
-ul.plain .lead{color:var(--ink)}
-ul.plain .gloss{color:var(--quiet);font-size:.93em}
+/* analyses: two columns of entries on wide screens */
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  gap:1.3em 40px;margin:0;padding:0;list-style:none}
+.works .lead{color:var(--ink)}
+.works .gloss{display:block;color:var(--quiet);font-size:.9em;
+  line-height:1.45;margin-top:.1em}
 
-.cols{font-family:var(--sans);font-size:14.6px;line-height:1.72;
-  color:var(--body)}
-.cols dt{font-size:12.5px;color:var(--quiet);margin:1.1em 0 .15em}
-.cols dt:first-child{margin-top:0}
+/* tools */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:1.5em 40px;font-family:var(--sans);font-size:14.6px;line-height:1.68;
+  margin:0}
+.cols dt{font-size:12.5px;color:var(--quiet);margin:0 0 .2em}
 .cols dd{margin:0}
 
-footer{margin:3.4em 0 0;padding:2em 0 5em;border-top:1px solid var(--rule)}
+footer{padding:52px 0 88px;border-top:1px solid var(--rule)}
+.footgrid{display:grid;grid-template-columns:158px minmax(0,1fr);gap:48px}
 .stamp{font-family:var(--sans);font-size:12.5px;color:var(--quiet);
-  margin-top:1.6em}
+  margin-top:1.5em}
 
-@media(max-width:640px){
+@media(max-width:760px){
   body{font-size:18.5px}
-  .opening{padding:58px 0 6px}
-  .sheet{padding:0 24px}
+  .page{padding:0 26px}
+  .opening{padding:60px 0 34px}
+  .row,.footgrid{grid-template-columns:1fr;gap:14px;padding:38px 0}
+  .rowlabel{padding-top:0}
+  footer{padding:38px 0 64px}
 }
 </style>
 </head>
 <body>
-<div class="sheet">
+<div class="page">
 
 <header class="opening">
   <h1 class="title">Beatriz Manso</h1>
@@ -109,150 +124,174 @@ footer{margin:3.4em 0 0;padding:2em 0 5em;border-top:1px solid var(--rule)}
   </p>
 </header>
 
-<hr>
+<div class="row">
+  <div class="rowlabel">What I do</div>
+  <div class="rowbody">
+    <p>
+      Transcriptomics, mostly. In R and Python, mostly. Usually the unglamorous
+      middle part: getting the counts right, picking a model, then working out
+      whether the result survives being tested properly.
+    </p>
+    <p>
+      I finished my PhD at the University of West London in 2026. I now run the
+      MSc Bioinformatics programme there and teach the computational modules.
+    </p>
+    <p>
+      Most of what I think about at the moment came out of going back through my
+      own thesis. The classifier in it looked fine. It was not, quite. Some of
+      the performance came from choosing the marker genes on the whole dataset
+      rather than inside each cross-validation fold, which quietly inflates
+      everything downstream. That was not a good week. It is also the most
+      useful thing I have learned.
+    </p>
+  </div>
+</div>
 
-<h2>What I do</h2>
-<p>
-  Transcriptomics, mostly. In R and Python, mostly. Usually the unglamorous
-  middle part: getting the counts right, picking a model, then working out
-  whether the result survives being tested properly.
-</p>
-<p>
-  I finished my PhD at the University of West London in 2026. I now run the
-  MSc Bioinformatics programme there and teach the computational modules.
-</p>
-<p>
-  Most of what I think about at the moment came out of going back through my
-  own thesis. The classifier in it looked fine. It was not, quite. Some of the
-  performance came from choosing the marker genes on the whole dataset rather
-  than inside each cross-validation fold, which quietly inflates everything
-  downstream. That was not a good week. It is also the most useful thing I
-  have learned.
-</p>
+<div class="row">
+  <div class="rowlabel">Current work</div>
+  <div class="rowbody">
+    <h2>Accuracy can hide a model that does nothing</h2>
+    <p>
+      Gene expression datasets are small and rarely balanced. The brain cancer
+      cohort below has 130 samples, 117 of them tumour. So a model that answers
+      <em>tumour</em> every single time scores 90&#37; accuracy while doing
+      nothing at all.
+    </p>
 
-<h2>Accuracy can hide a model that does nothing</h2>
-<p>
-  Gene expression datasets are small and rarely balanced. The brain cancer
-  cohort below has 130 samples, 117 of them tumour. So a model that answers
-  <em>tumour</em> every single time scores 90&#37; accuracy while doing
-  nothing at all.
-</p>
+    <figure>
+      <p class="key">
+        <span class="chip" style="background:var(--quiet)"></span>Accuracy
+        &nbsp;&nbsp;
+        <span class="chip" style="background:var(--accent)"></span>Cohen&#8217;s &#954;
+      </p>
+      <svg viewBox="0 0 560 232" role="img"
+           aria-label="Accuracy against Cohen's kappa for four models on GSE50161. Always-tumour and sigmoid both reach 0.900 accuracy at kappa zero. Softsign reaches 0.940 and 0.651; tanh reaches 0.941 and 0.665.">
+        <g stroke="currentColor" stroke-opacity=".15" stroke-width="1">
+          <line x1="52" y1="196" x2="548" y2="196"/>
+          <line x1="52" y1="151" x2="548" y2="151"/>
+          <line x1="52" y1="106" x2="548" y2="106"/>
+          <line x1="52" y1="61"  x2="548" y2="61"/>
+          <line x1="52" y1="16"  x2="548" y2="16"/>
+        </g>
+        <g font-family="Public Sans, sans-serif" font-size="10.5" fill="currentColor" fill-opacity=".45">
+          <text x="44" y="200" text-anchor="end">0</text>
+          <text x="44" y="155" text-anchor="end">0.25</text>
+          <text x="44" y="110" text-anchor="end">0.50</text>
+          <text x="44" y="65"  text-anchor="end">0.75</text>
+          <text x="44" y="20"  text-anchor="end">1.00</text>
+        </g>
+        <rect x="79"  y="34"  width="30" height="162" fill="currentColor" fill-opacity=".3"/>
+        <rect x="115" y="193" width="30" height="3" class="k"/>
+        <rect x="199" y="34"  width="30" height="162" fill="currentColor" fill-opacity=".3"/>
+        <rect x="235" y="193" width="30" height="3" class="k"/>
+        <rect x="319" y="27"  width="30" height="169" fill="currentColor" fill-opacity=".3"/>
+        <rect x="355" y="79"  width="30" height="117" class="k"/>
+        <rect x="439" y="26"  width="30" height="170" fill="currentColor" fill-opacity=".3"/>
+        <rect x="475" y="76"  width="30" height="120" class="k"/>
+        <g font-family="Public Sans, sans-serif" font-size="10.5" fill="currentColor" fill-opacity=".6">
+          <text x="112" y="216" text-anchor="middle">always &#8220;tumour&#8221;</text>
+          <text x="232" y="216" text-anchor="middle">sigmoid</text>
+          <text x="352" y="216" text-anchor="middle">softsign</text>
+          <text x="472" y="216" text-anchor="middle">tanh</text>
+        </g>
+        <g font-family="Public Sans, sans-serif" font-size="10" class="k">
+          <text x="130" y="189" text-anchor="middle">0.000</text>
+          <text x="250" y="189" text-anchor="middle">0.000</text>
+        </g>
+      </svg>
+      <figcaption>
+        Four models, one dataset (GSE50161, 117 tumour / 13 normal), 10&#215;5-fold
+        repeated stratified cross-validation. <b>Sigmoid reaches 0.900 accuracy at
+        a Cohen&#8217;s &#954; of exactly zero</b>, which is to say it is
+        indistinguishable from always answering &#8220;tumour&#8221;. Only tanh
+        and softsign learn anything. Reported as accuracy alone, all four look
+        respectable.
+      </figcaption>
+    </figure>
 
-<figure>
-  <p class="key">
-    <span class="chip" style="background:var(--quiet)"></span>Accuracy
-    &nbsp;&nbsp;
-    <span class="chip" style="background:var(--accent)"></span>Cohen&#8217;s &#954;
-  </p>
-  <svg viewBox="0 0 560 232" role="img"
-       aria-label="Accuracy against Cohen's kappa for four models on GSE50161. Always-tumour and sigmoid both reach 0.900 accuracy at kappa zero. Softsign reaches 0.940 and 0.651; tanh reaches 0.941 and 0.665.">
-    <g stroke="currentColor" stroke-opacity=".15" stroke-width="1">
-      <line x1="52" y1="196" x2="548" y2="196"/>
-      <line x1="52" y1="151" x2="548" y2="151"/>
-      <line x1="52" y1="106" x2="548" y2="106"/>
-      <line x1="52" y1="61"  x2="548" y2="61"/>
-      <line x1="52" y1="16"  x2="548" y2="16"/>
-    </g>
-    <g font-family="Public Sans, sans-serif" font-size="10.5" fill="currentColor" fill-opacity=".45">
-      <text x="44" y="200" text-anchor="end">0</text>
-      <text x="44" y="155" text-anchor="end">0.25</text>
-      <text x="44" y="110" text-anchor="end">0.50</text>
-      <text x="44" y="65"  text-anchor="end">0.75</text>
-      <text x="44" y="20"  text-anchor="end">1.00</text>
-    </g>
-    <rect x="79"  y="34"  width="30" height="162" fill="currentColor" fill-opacity=".3"/>
-    <rect x="115" y="193" width="30" height="3" class="k"/>
-    <rect x="199" y="34"  width="30" height="162" fill="currentColor" fill-opacity=".3"/>
-    <rect x="235" y="193" width="30" height="3" class="k"/>
-    <rect x="319" y="27"  width="30" height="169" fill="currentColor" fill-opacity=".3"/>
-    <rect x="355" y="79"  width="30" height="117" class="k"/>
-    <rect x="439" y="26"  width="30" height="170" fill="currentColor" fill-opacity=".3"/>
-    <rect x="475" y="76"  width="30" height="120" class="k"/>
-    <g font-family="Public Sans, sans-serif" font-size="10.5" fill="currentColor" fill-opacity=".6">
-      <text x="112" y="216" text-anchor="middle">always &#8220;tumour&#8221;</text>
-      <text x="232" y="216" text-anchor="middle">sigmoid</text>
-      <text x="352" y="216" text-anchor="middle">softsign</text>
-      <text x="472" y="216" text-anchor="middle">tanh</text>
-    </g>
-    <g font-family="Public Sans, sans-serif" font-size="10" class="k">
-      <text x="130" y="189" text-anchor="middle">0.000</text>
-      <text x="250" y="189" text-anchor="middle">0.000</text>
-    </g>
-  </svg>
-  <figcaption>
-    Four models, one dataset (GSE50161, 117 tumour / 13 normal), 10&#215;5-fold
-    repeated stratified cross-validation. <b>Sigmoid reaches 0.900 accuracy at a
-    Cohen&#8217;s &#954; of exactly zero</b>, which is to say it is
-    indistinguishable from always answering &#8220;tumour&#8221;. Only tanh and
-    softsign learn anything. Reported as accuracy alone, all four look
-    respectable.
-  </figcaption>
-</figure>
+    <p>
+      The second result is the one from my own pipeline. Selecting the marker
+      genes on the full dataset instead of inside each fold lifts logistic
+      regression from &#954;&#160;0.790 to 0.915. About
+      <strong>14&#37; of the headline number was the evaluation, not the
+      biology</strong>. I am writing both up now.
+    </p>
+  </div>
+</div>
 
-<p>
-  The second result is the one from my own pipeline. Selecting the marker genes
-  on the full dataset instead of inside each fold lifts logistic regression from
-  &#954;&#160;0.790 to 0.915. About <strong>14&#37; of the headline number was
-  the evaluation, not the biology</strong>. I am writing both up now.
-</p>
+<div class="row">
+  <div class="rowlabel">Doctoral work</div>
+  <div class="rowbody">
+    <p class="dateline">University of West London, 2022&#8211;2026</p>
+    <p class="cite">
+      Structural, Functional and Genomic Decompensation Analysis of the Brain in
+      Chiari Malformation I Patients
+    </p>
+    <p>
+      I wrote convolutional and artificial neural networks from scratch in C++,
+      then spent much longer evaluating them than building them. Activation
+      functions chosen by 10&#215;5-fold repeated stratified cross-validation
+      with Friedman testing and Bonferroni-corrected comparisons; benchmarks
+      against logistic regression, SVM and random forests under one protocol.
+    </p>
+    <p>
+      The benchmarking is the part I would defend hardest. It is also the part
+      that told me the deep model was not earning its complexity.
+    </p>
+  </div>
+</div>
 
-<h2>Doctoral work</h2>
-<p class="dateline">University of West London, 2022&#8211;2026</p>
-<p class="cite">
-  Structural, Functional and Genomic Decompensation Analysis of the Brain in
-  Chiari Malformation I Patients
-</p>
-<p>
-  I wrote convolutional and artificial neural networks from scratch in C++,
-  then spent much longer evaluating them than building them. Activation
-  functions chosen by 10&#215;5-fold repeated stratified cross-validation with
-  Friedman testing and Bonferroni-corrected comparisons; benchmarks against
-  logistic regression, SVM and random forests under one protocol.
-</p>
-<p>
-  The benchmarking is the part I would defend hardest. It is also the part that
-  told me the deep model was not earning its complexity.
-</p>
+<div class="row">
+  <div class="rowlabel">Some analyses</div>
+  <div class="rowbody">
+    <ul class="works">
+      <li><a class="lead" href="https://github.com/beatrizmclm/4.RNA-Seq_Expression_Analysis">RNA-seq expression analysis</a>
+        <span class="gloss">Raw reads through to differential expression. R and Bioconductor.</span></li>
+      <li><a class="lead" href="https://github.com/beatrizmclm/3.Variant_Call_Analysis">Variant calling</a>
+        <span class="gloss">SNPs and small indels from sequencing data.</span></li>
+      <li><a class="lead" href="https://github.com/beatrizmclm/8.eQTL_Analysis">eQTL analysis</a>
+        <span class="gloss">Allelic variants associated with transcript-level genetic control.</span></li>
+      <li><a class="lead" href="https://github.com/beatrizmclm/9.ChIP-seq_Analysis">ChIP-seq</a>
+        <span class="gloss">Binding sites of DNA-associated proteins.</span></li>
+      <li><a class="lead" href="https://github.com/beatrizmclm/10.DNA_Methylation_Analysis">DNA methylation</a>
+        <span class="gloss">Chromosomal patterns of DNA and histone modification.</span></li>
+      <li><a class="lead" href="https://github.com/beatrizmclm/Machine_Learning_Global_Covid_Dataset">Machine learning on COVID-19 data</a>
+        <span class="gloss">Supervised and unsupervised modelling, outside genomics for once.</span></li>
+    </ul>
+    <p style="font-size:.93em;color:var(--quiet);margin-top:1.5em">
+      Older coursework across NGS quality control, microarray analysis,
+      phylogenetics, protein structure and Biopython is archived on
+      <a href="https://github.com/beatrizmclm?tab=repositories">GitHub</a>.
+    </p>
+  </div>
+</div>
 
-<h2>Some analyses</h2>
-<ul class="plain">
-  <li><a class="lead" href="https://github.com/beatrizmclm/4.RNA-Seq_Expression_Analysis">RNA-seq expression analysis</a><br>
-    <span class="gloss">Raw reads through to differential expression. R and Bioconductor.</span></li>
-  <li><a class="lead" href="https://github.com/beatrizmclm/3.Variant_Call_Analysis">Variant calling</a><br>
-    <span class="gloss">SNPs and small indels from sequencing data.</span></li>
-  <li><a class="lead" href="https://github.com/beatrizmclm/8.eQTL_Analysis">eQTL analysis</a><br>
-    <span class="gloss">Allelic variants associated with transcript-level genetic control.</span></li>
-  <li><a class="lead" href="https://github.com/beatrizmclm/9.ChIP-seq_Analysis">ChIP-seq</a><br>
-    <span class="gloss">Binding sites of DNA-associated proteins.</span></li>
-  <li><a class="lead" href="https://github.com/beatrizmclm/10.DNA_Methylation_Analysis">DNA methylation</a><br>
-    <span class="gloss">Chromosomal patterns of DNA and histone modification.</span></li>
-  <li><a class="lead" href="https://github.com/beatrizmclm/Machine_Learning_Global_Covid_Dataset">Machine learning on COVID-19 data</a><br>
-    <span class="gloss">Supervised and unsupervised modelling, outside genomics for once.</span></li>
-</ul>
-<p style="font-size:.93em;color:var(--quiet)">
-  Older coursework across NGS quality control, microarray analysis,
-  phylogenetics, protein structure and Biopython is archived on
-  <a href="https://github.com/beatrizmclm?tab=repositories">GitHub</a>.
-</p>
-
-<h2>Tools</h2>
-<dl class="cols">
-  <dt>Languages</dt><dd>Python, R, C++, Bash, SQL</dd>
-  <dt>Genomics</dt><dd>RNA-seq, microarray, variant annotation, ChIP-seq, methylation, eQTL</dd>
-  <dt>Modelling</dt><dd>scikit-learn, Keras, TensorFlow, cross-validation and model comparison</dd>
-  <dt>Day to day</dt><dd>Git, Linux, HPC, Docker, Snakemake, R Markdown</dd>
-</dl>
+<div class="row">
+  <div class="rowlabel">Tools</div>
+  <div class="rowbody">
+    <dl class="cols">
+      <div><dt>Languages</dt><dd>Python, R, C++, Bash, SQL</dd></div>
+      <div><dt>Genomics</dt><dd>RNA-seq, microarray, variant annotation, ChIP-seq, methylation, eQTL</dd></div>
+      <div><dt>Modelling</dt><dd>scikit-learn, Keras, TensorFlow, cross-validation and model comparison</dd></div>
+      <div><dt>Day to day</dt><dd>Git, Linux, HPC, Docker, Snakemake, R Markdown</dd></div>
+    </dl>
+  </div>
+</div>
 
 <footer>
-  <p>
-    I am looking for research and industry roles in bioinformatics and
-    computational biology. If any of the above is useful to you, or wrong,
-    do get in touch.
-  </p>
-  <p class="details">
-    <a href="mailto:manso.beatriz@gmail.com">manso.beatriz@gmail.com</a><span class="sep">/</span><a href="https://github.com/beatrizmclm">GitHub</a><span class="sep">/</span><a href="https://www.linkedin.com/in/beatriz-manso/">LinkedIn</a><span class="sep">/</span><a href="cv.pdf">CV</a>
-  </p>
-  <p class="stamp">Last updated August 2026</p>
+  <div class="footgrid">
+    <div class="rowlabel">Contact</div>
+    <div class="rowbody">
+      <p>
+        I am looking for research and industry roles in bioinformatics and
+        computational biology. Do get in touch.
+      </p>
+      <p class="details">
+        <a href="mailto:manso.beatriz@gmail.com">manso.beatriz@gmail.com</a><span class="sep">/</span><a href="https://github.com/beatrizmclm">GitHub</a><span class="sep">/</span><a href="https://www.linkedin.com/in/beatriz-manso/">LinkedIn</a><span class="sep">/</span><a href="cv.pdf">CV</a>
+      </p>
+      <p class="stamp">Last updated August 2026</p>
+    </div>
+  </div>
 </footer>
 
 </div>
