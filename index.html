@@ -137,12 +137,11 @@ footer{padding:52px 0 88px;border-top:1px solid var(--rule)}
       MSc Bioinformatics programme there and teach the computational modules.
     </p>
     <p>
-      Most of what I think about at the moment came out of going back through my
-      own thesis. The classifier in it looked fine. It was not, quite. Some of
-      the performance came from choosing the marker genes on the whole dataset
-      rather than inside each cross-validation fold, which quietly inflates
-      everything downstream. That was not a good week. It is also the most
-      useful thing I have learned.
+      Most of what I think about at the moment is evaluation. Choosing marker
+      genes on the whole dataset rather than inside each cross-validation fold
+      inflates performance quietly and substantially, and it is easy to do
+      without noticing. I found it in my own thesis pipeline, and measuring what
+      it was worth has changed how I work since.
     </p>
   </div>
 </div>
@@ -210,11 +209,11 @@ footer{padding:52px 0 88px;border-top:1px solid var(--rule)}
     </figure>
 
     <p>
-      The second result is the one from my own pipeline. Selecting the marker
-      genes on the full dataset instead of inside each fold lifts logistic
-      regression from &#954;&#160;0.790 to 0.915. About
-      <strong>14&#37; of the headline number was the evaluation, not the
-      biology</strong>. I am writing both up now.
+      The second result concerns feature selection. Choosing the marker genes on
+      the full dataset rather than inside each fold lifts logistic regression
+      from &#954;&#160;0.790 to 0.915, so <strong>about 14&#37; of the headline
+      number was the evaluation rather than the biology</strong>. I found it in
+      my own thesis pipeline. Both are being written up.
     </p>
   </div>
 </div>
