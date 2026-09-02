@@ -210,10 +210,15 @@ footer{padding:52px 0 88px;border-top:1px solid var(--rule)}
 
     <p>
       The second result concerns feature selection. Choosing the marker genes on
-      the full dataset rather than inside each fold lifts logistic regression
-      from &#954;&#160;0.790 to 0.915, so <strong>about 14&#37; of the headline
-      number was the evaluation rather than the biology</strong>. I found it in
-      my own thesis pipeline.
+      the full dataset rather than inside each fold lifted logistic regression
+      from &#954;&#160;0.790 to 0.915 on that cohort, so about 14&#37; of the
+      headline number was the evaluation rather than the biology. I found it in
+      my own thesis pipeline, then checked whether it generalises: across four
+      public datasets the inflation is positive in ten of twelve model-dataset
+      pairs, but <strong>its size tracks how small the minority class is</strong>.
+      In a balanced cohort it disappears entirely. That makes it a conditional
+      problem rather than a flat tax, and it bites hardest on exactly the small,
+      imbalanced cohorts where the check is least often run.
     </p>
   </div>
 </div>
